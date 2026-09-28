@@ -1,0 +1,20 @@
+{
+  "name": "pwp-cancer-2types",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "timeline": "python3 src/tools/make_timeline.py",
+    "audio": "python3 src/tools/build_audio.py",
+    "render": "node render.mjs",
+    "all": "python3 src/tools/build_audio.py && node render.mjs"
+  },
+  "dependencies": {
+    "gsap": "3.12.5"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1",
+    "@fontsource/ibm-plex-sans-thai": "5.1.0",
+    "@fontsource/dm-serif-display": "5.1.0",
+    "@fontsource/playfair-display": "5.1.0"
+  }
+}

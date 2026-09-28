@@ -1,0 +1,93 @@
+/* ---------- fonts (local copies of Google Fonts, OFL) ---------- */
+@font-face { font-family: "Plex Thai"; font-weight: 500; src: url(fonts/ibm-plex-sans-thai-thai-500-normal.woff2) format("woff2"); unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC; }
+@font-face { font-family: "Plex Thai"; font-weight: 600; src: url(fonts/ibm-plex-sans-thai-thai-600-normal.woff2) format("woff2"); unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC; }
+@font-face { font-family: "Plex Thai"; font-weight: 700; src: url(fonts/ibm-plex-sans-thai-thai-700-normal.woff2) format("woff2"); unicode-range: U+02D7, U+0303, U+0331, U+0E01-0E5B, U+200C-200D, U+25CC; }
+@font-face { font-family: "Plex Thai"; font-weight: 500; src: url(fonts/ibm-plex-sans-thai-latin-500-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2212, U+2215; }
+@font-face { font-family: "Plex Thai"; font-weight: 600; src: url(fonts/ibm-plex-sans-thai-latin-600-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2212, U+2215; }
+@font-face { font-family: "Plex Thai"; font-weight: 700; src: url(fonts/ibm-plex-sans-thai-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2212, U+2215; }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; src: url(fonts/dm-serif-display-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Playfair Display"; font-style: italic; font-weight: 500; src: url(fonts/playfair-display-latin-500-italic.woff2) format("woff2"); }
+
+:root {
+  --ice: #C6D4D6; --ice-deep: #AEBFC2; --rb: #6F4439; --sg: #B23A48; --wi: #F4F7F7;
+}
+html, body { margin: 0; background: #111; }
+#stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--ice);
+  -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; }
+.scene { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.bg-ice { background: var(--ice); } .bg-sangria { background: var(--sg); } .bg-rootbeer { background: var(--rb); }
+.abs { position: absolute; }
+.rb { color: var(--rb); } .sg { color: var(--sg); } .wi { color: var(--wi); }
+
+/* Thai text: never auto-wrap (breaks are set by hand), room for upper vowels / tone marks */
+.th { font-family: "Plex Thai", sans-serif; white-space: nowrap; word-break: keep-all; line-height: 1.3; }
+.h1 { font-weight: 700; font-size: 112px; }
+.sub56 { font-weight: 600; font-size: 56px; }
+.card-t { font-weight: 700; font-size: 52px; }
+.card-s { font-weight: 600; font-size: 46px; }
+.serif { font-family: "DM Serif Display", serif; line-height: 1; }
+
+/* pill tag: full-round, 3 px border */
+.pill { position: absolute; left: 80px; top: 256px; display: flex; align-items: center; gap: 16px; height: 80px;
+  padding: 0 34px 0 12px; border: 3px solid; border-radius: 999px; box-sizing: border-box;
+  font: 600 40px/1.35 "Plex Thai"; white-space: nowrap; }
+.pill-num { display: grid; place-items: center; width: 54px; height: 54px; border: 3px solid currentColor;
+  border-radius: 50%; box-sizing: border-box; font: 36px/1 "DM Serif Display"; padding-top: 3px; }
+.pill-label { padding-top: 4px; }
+.pill--light { color: var(--rb); border-color: var(--rb); }
+.pill--dark { color: var(--wi); border-color: var(--wi); }
+
+.brand { position: absolute; right: 180px; top: 266px; font: 44px/1.2 "DM Serif Display"; white-space: nowrap; z-index: 5; }
+.brand i { font-family: "Playfair Display"; font-style: italic; font-weight: 500; }
+.brand--light { color: var(--rb); } .brand--dark { color: var(--wi); }
+
+.ghost { position: absolute; font-family: "DM Serif Display"; line-height: .82; white-space: nowrap; pointer-events: none; }
+
+.card { position: absolute; border-radius: 28px; border: 5px solid; box-sizing: border-box; }
+.chip { display: flex; align-items: center; gap: 26px; padding: 0 30px; }
+.chip-icon { width: 126px; height: 126px; flex: none; }
+.chip-label { font: 700 50px/1.3 "Plex Thai"; color: var(--rb); white-space: nowrap; }
+.chip-detail { display: flex; align-items: baseline; gap: 14px; font: 600 44px/1.3 "Plex Thai"; color: var(--rb); white-space: nowrap; }
+.chip-detail .serif { font-size: 66px; color: var(--sg); }
+
+.bignum { font-family: "DM Serif Display", serif; line-height: 1; white-space: nowrap; }
+
+/* highlight block: bg wipes, text rises; top padding >= .18em for Thai upper marks */
+.hl { position: relative; display: inline-block; padding: .2em .22em .06em; line-height: 1.25; }
+.hl-bg { position: absolute; inset: 0; border-radius: 16px; transform-origin: left center; }
+.hl-tx { position: relative; display: inline-block; }
+
+.disclaimer { position: absolute; left: 80px; top: 1494px; width: 820px; font: 500 26px/1.3 "Plex Thai"; white-space: nowrap; z-index: 6; }
+.disclaimer--light { color: var(--rb); } .disclaimer--dark { color: var(--wi); }
+
+/* split screen */
+.split { position: absolute; inset: 0; }
+.split-l { position: absolute; left: 0; top: 0; bottom: 0; width: 536px; background: var(--sg); }
+.split-r { position: absolute; left: 544px; top: 0; bottom: 0; right: 0; background: var(--rb); }
+.split-div { position: absolute; left: 536px; top: 0; bottom: 0; width: 8px; background: var(--wi); }
+
+.icon { display: block; width: 100%; height: 100%; overflow: visible; filter: url(#rough); }
+.draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.sparkle { position: absolute; }
+.edge { position: absolute; left: 0; width: 1080px; height: 10px; z-index: 40; visibility: hidden; }
+
+/* subtitles: y 1372-1488, White Ice with a 4 px Root Beer outline, keywords on a Sangria block */
+#subs { position: absolute; left: 80px; top: 1372px; width: 820px; height: 116px; z-index: 50; }
+#subs .sub { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  visibility: hidden; font: 700 44px/1.25 "Plex Thai"; color: var(--wi); text-align: center; }
+.sub-line { white-space: nowrap; padding: 0 6px; }
+#subs .sub { text-shadow:
+  4px 0 var(--rb), -4px 0 var(--rb), 0 4px var(--rb), 0 -4px var(--rb), 3px 3px var(--rb), -3px 3px var(--rb),
+  3px -3px var(--rb), -3px -3px var(--rb), 4px 2px var(--rb), -4px 2px var(--rb), 4px -2px var(--rb), -4px -2px var(--rb),
+  2px 4px var(--rb), -2px 4px var(--rb), 2px -4px var(--rb), -2px -4px var(--rb); }
+#subs .kw { background: var(--sg); color: var(--wi); text-shadow: none; border-radius: 10px; padding: .18em .2em .02em; margin: 0 .08em; }
+/* on Sangria / split backgrounds: no Root Beer outline (Sangria and Root Beer must not touch) */
+#subs .sub.on-sg { text-shadow: none; }
+#subs .sub.on-sg .sub-plate { background: var(--wi); color: var(--rb); border-radius: 22px; padding: 6px 22px 8px; }
+#subs .sub.on-sg .kw { background: var(--sg); color: var(--wi); }
+
+#grain { position: absolute; inset: 0; z-index: 90; pointer-events: none; opacity: .045; background-size: 360px 360px;
+  background-image: url(grain.png); /* static noise tile (was feTurbulence: same look, ~5x faster to render) */ }
+
+/* safe-area guide (?guide=1) */
+#guide { position: absolute; inset: 0; z-index: 100; pointer-events: none; }
